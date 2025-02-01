@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug Solution</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text is initially visible.
+  </div>
+
+  <button onclick="myFunction()">Click Me</button>
+
+  <script>
+    function myFunction() {
+      document.getElementById("myDiv").style.display = "none"; // Hide the div
+
+      //Corrected code
+      setTimeout(function() {
+        const element = document.getElementById("myDiv");
+        if (element) {
+          console.log(element.innerHTML);
+        } else {
+          console.log("Element not found");
+        }
+      }, 1000); // Simulate asynchronous operation
+    }
+  </script>
+</body>
+</html>
