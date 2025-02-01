@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Uncommon HTML Bug</title>
+</head>
+<body>
+  <div id="myDiv">
+    This text is initially visible.
+  </div>
+
+  <button onclick="myFunction()">Click Me</button>
+
+  <script>
+    function myFunction() {
+      document.getElementById("myDiv").style.display = "none"; // Hide the div
+
+      // Uncommon bug: Trying to access a property of a non-existent element
+      // after it has been removed from the DOM.
+      setTimeout(function() {
+        try {
+          console.log(document.getElementById("myDiv").innerHTML); //Error! 
+        } catch (error) {
+          console.error("Error accessing removed element:", error);
+        }
+      }, 1000); // Simulate asynchronous operation
+    }
+  </script>
+</body>
+</html>
